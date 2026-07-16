@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://susailum.com.br/sitemap.xml
