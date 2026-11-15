@@ -307,3 +307,6 @@ h1 em,h2 em,h3 em,.sec-head h2 em{font-family:var(--f-title)!important;text-tran
 .vbox .reveal-hint{position:absolute;left:16px;bottom:14px;z-index:2;font:700 11px/1 var(--f-text);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);transition:opacity .4s;pointer-events:none}
 .vbox.touched .reveal-hint{opacity:0}
 @media(hover:none){.vbox .reveal-hint{display:none}}
+.vbox video.owl{mix-blend-mode:normal;background:#f4f2ee}
+.vbox:has(video.owl){background:#f4f2ee;border-color:transparent}
+.vbox:has(video.owl) .reveal-hint{color:rgba(12,13,13,.5)}
