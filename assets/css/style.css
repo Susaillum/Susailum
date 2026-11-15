@@ -292,3 +292,7 @@ img,video{max-width:100%}
 }
 @media(max-width:880px){.hero-p .media:not(.blend){display:none}}
 .hero-p h1,h1{line-height:1!important}
+/* v2.1: sai a Gloock. A palavra de destaque usa a mesma fonte do título, só muda a cor */
+h1 em,h2 em,h3 em,.sec-head h2 em{font-family:var(--f-title)!important;text-transform:uppercase!important;letter-spacing:.005em!important;font-style:normal!important}
+.cta h2 em{font-family:inherit!important;text-transform:none!important}
+.hero .intro p.big em,.manif em,.lead em{font-family:inherit!important;font-style:normal!important}
