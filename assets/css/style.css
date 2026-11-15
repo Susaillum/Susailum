@@ -210,3 +210,85 @@ footer .base{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px;
   .rv{opacity:1;transform:none;transition:none}
   .marquee .track{animation:none}
 }
+
+/* ============================================================
+   V2 (nov/2026): tipografia nova, grid único e responsivo
+   Trocar fonte = mudar só as variáveis abaixo.
+   Kyoto → Anton · LOTEK → Bagel Fat One · OHHO → Young Serif
+   Pertoneum → Gloock · Kyoto Inline → Bungee Inline · texto → Lato
+   ============================================================ */
+:root{
+  --f-title:"Anton",Impact,sans-serif;        /* Kyoto */
+  --f-heavy:"Bagel Fat One",sans-serif;        /* LOTEK */
+  --f-quirk:"Young Serif",Georgia,serif;       /* OHHO */
+  --f-elegant:"Gloock",Georgia,serif;          /* Pertoneum */
+  --f-inline:"Bungee Inline",sans-serif;       /* Kyoto Inline */
+  --f-text:"Lato",system-ui,sans-serif;
+  --sans:var(--f-text); --serif:var(--f-elegant); --mono:var(--f-text);
+  --gut:clamp(18px,4vw,56px); --maxw:1440px; --navh:64px;
+}
+body[data-theme="futverse"]{--bg:#120a2e;--bg2:#1c1046;--ink:#f3f0ff;--mut:#a99dd6;--acc:#a43bff;--acc2:#2de3a5;--line:rgba(243,240,255,.15)}
+body{font-family:var(--f-text);font-size:16px}
+/* um container só: tudo alinha na mesma margem */
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut);width:100%}
+section{padding:clamp(48px,8vh,96px) 0 clamp(24px,4vh,48px)}
+section .wrap.contact-grid{display:grid}
+nav{padding:12px var(--gut);height:var(--navh)}
+nav .logo{display:flex;align-items:center;gap:10px;font-family:var(--f-text);font-weight:900;letter-spacing:-.03em}
+nav .logo img,footer .fl img{width:34px;height:34px;border-radius:9px}
+nav .links{font-family:var(--f-text);font-weight:700;font-size:12px;letter-spacing:.14em}
+.kicker,.sec-head .n,.chip,.btn,.hint,.marquee span,.case-top .ext a,.rail .cell .cap,.yt-cap,form label,.channel span,footer h5,footer .base,.member .role,.tl .y,.feat .tagov,.spec .ov .k,.stats span,.card li,.form-msg{font-family:var(--f-text);font-weight:700}
+/* títulos: Kyoto (caixa-alta condensada) + palavra elegante (Pertoneum) */
+h1,.sec-head h2,.case-top h3,.svc h3{font-family:var(--f-title)!important;font-weight:400!important;letter-spacing:.005em!important;text-transform:uppercase!important;line-height:.92!important;overflow-wrap:break-word}
+h1 em,h2 em,h3 em,.sec-head h2 em,.cta h2 em{font-family:var(--f-elegant)!important;font-style:normal!important;font-weight:400!important;text-transform:none!important;letter-spacing:-.01em!important;color:var(--acc2)}
+.hero-p h1,h1.page{font-size:clamp(40px,8vw,120px)!important}
+.sec-head h2{font-size:clamp(32px,5.4vw,78px)!important}
+.case-top h3,.svc h3{font-size:clamp(28px,4vw,56px)!important}
+/* LOTEK: títulos de card, nomes e números */
+.card h4,.step h4,.member h4,.tl h4,.spec .ov h3{font-family:var(--f-heavy)!important;font-weight:400!important;text-transform:none!important;letter-spacing:0!important}
+.cta h2{font-family:var(--f-heavy)!important;font-weight:400!important;letter-spacing:-.01em!important;font-size:clamp(38px,7.5vw,110px)!important;line-height:1!important}
+/* Kyoto Inline: números grandes */
+.stats b{font-family:var(--f-inline);font-weight:400;letter-spacing:0}
+.case-top .idx,.svc .num,.card .ic{font-family:var(--f-inline);letter-spacing:.06em;font-size:15px}
+/* OHHO: textos de abertura */
+.hero .intro p.big,.manif p,.lead.quirk{font-family:var(--f-quirk);font-weight:400;letter-spacing:0}
+.hero .intro p.big em,.manif em{font-family:var(--f-elegant)!important;font-style:normal}
+.lead{font-size:clamp(16px,1.4vw,19px);max-width:68ch}
+.lead em{font-family:var(--f-elegant);font-style:normal}
+/* cabeçalho das páginas internas: mesmo grid, sem vazio */
+.hero-p{min-height:0!important;padding:calc(var(--navh) + clamp(40px,9vh,110px)) 0 clamp(20px,4vh,40px)!important;display:block!important;position:relative}
+.hero-p .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 4vw;align-items:end}
+.hero-p .txt{min-width:0}
+.hero-p .media{width:min(30vw,420px);border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000}
+.hero-p .media video{display:block;width:100%;position:static!important;mix-blend-mode:normal;opacity:1}
+.hero-p .media.blend video{mix-blend-mode:screen}
+.hero-p .lead{margin-top:clamp(14px,3vh,28px)}
+@media(max-width:880px){.hero-p .wrap{grid-template-columns:1fr}.hero-p .media{width:100%;max-width:480px}}
+#cases{padding-top:0}
+.case{padding:clamp(40px,7vh,80px) 0 clamp(16px,3vh,32px)}
+.svc{padding:clamp(28px,5vh,56px) 0}
+/* home hero */
+.hero{padding:calc(var(--navh) + 6vh) 0 6vh;min-height:min(100svh,900px)}
+.hero-grid{padding-inline:var(--gut);max-width:var(--maxw)}
+/* contato: canais alinhados */
+.contact-grid{gap:clamp(24px,5vw,72px);align-items:start}
+.channels{display:grid;gap:12px}
+.channel{margin:0;padding:16px 20px;min-height:84px}
+.channel .ic,.channel .ic.pic{width:52px;height:52px;min-width:52px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.channel .ic.pic img{width:100%;height:100%;object-fit:cover}
+.channel b{font-family:var(--f-text);font-weight:900;font-size:16px}
+.channel .note{color:var(--mut);font-size:14px;line-height:1.7;margin-top:6px}
+footer{padding:34px var(--gut)}
+footer .fl{display:flex;align-items:center;gap:10px;font-family:var(--f-text)}
+/* zoom / telas pequenas: nada estoura a largura */
+img,video{max-width:100%}
+.sec-head{gap:10px 24px}
+@media(max-width:600px){
+  .rail .cell img,.rail .cell video{height:220px}
+  .stats div{padding:24px 18px}
+  .card{padding:26px 22px}
+  .member{padding:28px 22px}
+  .hero .intro p.big{font-size:19px}
+}
+@media(max-width:880px){.hero-p .media:not(.blend){display:none}}
+.hero-p h1,h1{line-height:1!important}
