@@ -296,3 +296,8 @@ img,video{max-width:100%}
 h1 em,h2 em,h3 em,.sec-head h2 em{font-family:var(--f-title)!important;text-transform:uppercase!important;letter-spacing:.005em!important;font-style:normal!important}
 .cta h2 em{font-family:inherit!important;text-transform:none!important}
 .hero .intro p.big em,.manif em,.lead em{font-family:inherit!important;font-style:normal!important}
+/* vídeos: 4 por linha, a última linha fica centralizada */
+.yt-grid{display:flex!important;flex-wrap:wrap;justify-content:center;gap:16px}
+.yt-grid .yt{flex:0 0 calc((100% - 48px)/4)}
+@media(max-width:1100px){.yt-grid .yt{flex-basis:calc((100% - 16px)/2)}}
+@media(max-width:600px){.yt-grid .yt{flex-basis:100%}}
