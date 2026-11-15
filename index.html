@@ -125,8 +125,10 @@
     </g>
   </svg>
   <div class="hero-grid">
-    <div class="vbox">
+    <div class="vbox" data-reveal="assets/img/hero-reveal.jpg">
       <video src="assets/video/negajur.mp4" autoplay muted loop playsinline aria-label="susailum"></video>
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="b"/><feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter></svg>
+      <span class="reveal-hint" aria-hidden="true">passa o mouse ↗</span>
     </div>
     <div class="intro">
       <p class="big">Somos dois caras fazendo marca, conteúdo e <em>arte</em> pra <strong>futebol, direito e comida</strong>.</p>
@@ -270,5 +272,26 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script>
+/* topo estilo landonorris.com: mancha líquida segue o cursor e revela os trabalhos por baixo do logo */
+(()=>{const box=document.querySelector('.vbox[data-reveal]');if(!box||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const cv=document.createElement('canvas');cv.className='reveal';box.appendChild(cv);const ctx=cv.getContext('2d');
+const img=new Image();img.src=box.dataset.reveal;let W=0,H=0;
+function size(){const r=box.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0)}
+size();addEventListener('resize',size);
+const pts=[];let mx=0,my=0,act=0,t=Math.random()*9,vis=true;
+box.addEventListener('pointermove',e=>{const r=box.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;act=performance.now();box.classList.add('touched')});
+new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(box);
+function frame(now){requestAnimationFrame(frame);if(!vis||!W)return;t+=.012;
+ let x=mx,y=my;if(now-act>1800){x=W*(.5+.34*Math.sin(t*.9));y=H*(.5+.3*Math.sin(t*1.3+1))}
+ pts.push({x,y,r:Math.min(W,H)*.17,l:1});
+ ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';
+ for(let i=pts.length-1;i>=0;i--){const p=pts[i];p.l-=.022;if(p.l<=0){pts.splice(i,1);continue}
+  ctx.beginPath();ctx.arc(p.x,p.y,p.r*Math.pow(p.l,.55),0,6.2832);ctx.fill()}
+ if(img.complete&&img.naturalWidth){ctx.globalCompositeOperation='source-in';
+  const s=Math.max(W/img.naturalWidth,H/img.naturalHeight)*1.06,iw=img.naturalWidth*s,ih=img.naturalHeight*s;
+  ctx.drawImage(img,(W-iw)/2-(x/W-.5)*W*.04,(H-ih)/2-(y/H-.5)*H*.04,iw,ih)}}
+requestAnimationFrame(frame)})();
+</script>
 </body>
 </html>

@@ -301,3 +301,9 @@ h1 em,h2 em,h3 em,.sec-head h2 em{font-family:var(--f-title)!important;text-tran
 .yt-grid .yt{flex:0 0 calc((100% - 48px)/4)}
 @media(max-width:1100px){.yt-grid .yt{flex-basis:calc((100% - 16px)/2)}}
 @media(max-width:600px){.yt-grid .yt{flex-basis:100%}}
+/* topo da home: efeito de revelar (estilo landonorris.com) */
+.vbox{position:relative;cursor:crosshair}
+.vbox canvas.reveal{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;filter:url(#goo)}
+.vbox .reveal-hint{position:absolute;left:16px;bottom:14px;z-index:2;font:700 11px/1 var(--f-text);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);transition:opacity .4s;pointer-events:none}
+.vbox.touched .reveal-hint{opacity:0}
+@media(hover:none){.vbox .reveal-hint{display:none}}
