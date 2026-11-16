@@ -89,7 +89,7 @@
 </head>
 <body>
 <div id="intro" aria-hidden="true">
-  <div class="intro-stage"><video id="introVid" muted playsinline preload="auto" src="assets/video/coruja-loop.mp4" data-intro="assets/video/coruja-intro.mp4"></video></div>
+  <div class="intro-stage"><video id="introVid" muted playsinline preload="auto" data-intro="assets/video/coruja-intro.mp4"></video></div>
   <div class="intro-txt"><p class="intro-word"><span>S</span><span>U</span><span>S</span><span>A</span><span>I</span><span>L</span><span>U</span><span>M</span></p><p class="intro-sub">Design &amp; vibecode · futebol, direito e comida</p></div>
   <button class="intro-skip" type="button">pular</button>
 </div>
@@ -104,7 +104,7 @@
  const out=()=>{if(done)return;done=true;el.classList.add('out');document.documentElement.classList.remove('intro-on');setTimeout(()=>el.remove(),900)};
  const txt=()=>{el.classList.add('txt');setTimeout(out,1500)};
  el.querySelector('.intro-skip').onclick=out;setTimeout(out,14000);
- fetch(v.dataset.intro,{method:'HEAD'}).then(r=>{if(r.ok){v.src=v.dataset.intro;v.loop=false;v.onended=txt;v.play().catch(txt)}else throw 0})
+ fetch(v.dataset.intro,{method:'HEAD'}).then(r=>{if(r.ok){v.src=v.dataset.intro;v.loop=false;v.playbackRate=1.25;let shown=false;v.ontimeupdate=()=>{if(!shown&&v.duration&&v.currentTime>v.duration-.5){shown=true;el.classList.add('txt');setTimeout(out,1900)}};v.onended=()=>{if(!shown){shown=true;txt()}};v.play().catch(txt)}else throw 0})
  .catch(()=>{v.loop=true;v.play().catch(()=>{});setTimeout(txt,1800)});
 })();
 </script>
