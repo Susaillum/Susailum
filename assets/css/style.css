@@ -330,3 +330,15 @@ html.intro-on{overflow:hidden}
 .intro-sub{font:700 clamp(11px,1.1vw,14px)/1 var(--f-text);letter-spacing:.2em;text-transform:uppercase;color:#7a0a0e;margin-top:14px;opacity:0;transform:translateY(10px);transition:all .6s .5s}
 #intro.txt .intro-sub{opacity:1;transform:none}
 .intro-skip{position:absolute;right:24px;bottom:22px;background:none;border:1px solid rgba(12,13,13,.25);border-radius:99px;padding:8px 16px;font:700 11px/1 var(--f-text);letter-spacing:.16em;text-transform:uppercase;color:#0c0d0d;cursor:pointer}
+/* v2.2: espaçamento dos títulos, quebras e alinhamentos */
+h1,.hero-p h1,.sec-head h2,.case-top h3,.svc h3{line-height:1.06!important;text-wrap:balance}
+.hero-p .kicker{display:block;margin-bottom:clamp(12px,1.6vh,20px)}
+.hero-p .wrap{align-items:center!important}
+.hero-p .media{width:min(36vw,520px)}
+.hero-title{line-height:1!important}
+.hero-title span,.hero-title em{display:block}
+.hero-grid .intro{min-width:0}
+.hero-grid>*{min-width:0}
+.manif .hl{color:#e5322d}
+.hero-title{line-height:1.08!important}
+.hero-p h1{line-height:1.12!important}
